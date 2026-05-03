@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --blanc: #FFFFFF;
+  --creme: #FAFAF8;
+  --encre: #111111;
+  --gris-1: #F5F4F1;
+  --gris-2: #ECEAE4;
+  --gris-3: #C8C4BC;
+  --gris-4: #8C8880;
+  --gris-5: #5A5652;
+  --bleu: #00349A;
+  --rouge: #C9020D;
+  --vert: #006B3E;
+  --border-light: rgba(0,0,0,0.07);
+  --border-mid: rgba(0,0,0,0.14);
+  --border-strong: rgba(0,0,0,0.28);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--creme);
+  color: var(--encre);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+::selection { background: var(--encre); color: var(--blanc); }
+*:focus-visible { outline: 1px solid var(--encre); outline-offset: 3px; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--gris-1); }
+::-webkit-scrollbar-thumb { background: var(--gris-3); }
+
+.label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris-4);
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.08em;
+  cursor: pointer; transition: all 0.15s ease; border: none; text-decoration: none; white-space: nowrap;
+}
+.btn-primary { background: var(--encre); color: var(--blanc); padding: 10px 24px; }
+.btn-primary:hover { opacity: 0.82; }
+.btn-ghost { background: transparent; color: var(--encre); border: 0.5px solid var(--border-strong); padding: 10px 24px; }
+.btn-ghost:hover { background: var(--gris-1); }
+.btn-sm { padding: 7px 16px; font-size: 10px; }
+.btn-lg { padding: 14px 36px; font-size: 12px; }
+
+.input {
+  width: 100%; background: var(--blanc); border: 0.5px solid var(--border-mid);
+  color: var(--encre); font-family: 'IBM Plex Sans', sans-serif; font-size: 14px;
+  padding: 10px 14px; transition: border-color 0.15s; border-radius: 0; appearance: none;
+}
+.input::placeholder { color: var(--gris-3); }
+.input:focus { outline: none; border-color: var(--encre); }
+
+.upload-zone {
+  border: 0.5px dashed var(--border-mid); background: var(--blanc);
+  transition: all 0.2s ease; cursor: pointer;
+}
+.upload-zone:hover, .upload-zone.active { border-color: var(--encre); background: var(--gris-1); }
+
+.pill {
+  font-family: 'IBM Plex Mono', monospace; font-size: 9px;
+  letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; border: 0.5px solid;
+}
+.pill-verified { border-color: var(--vert); color: var(--vert); background: rgba(0,107,62,0.05); }
+.pill-likely   { border-color: var(--bleu); color: var(--bleu); background: rgba(0,52,154,0.05); }
+.pill-inconclusive { border-color: var(--gris-4); color: var(--gris-5); background: var(--gris-1); }
+.pill-suspicious   { border-color: var(--rouge); color: var(--rouge); background: rgba(201,2,13,0.05); }
+.pill-type { border-color: var(--border-mid); color: var(--gris-5); background: var(--gris-1); }
+
+.progress-track { height: 1px; background: var(--gris-2); overflow: hidden; }
+.progress-fill { height: 100%; background: var(--encre); transition: width 0.4s ease; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.45s ease both; }
+.delay-1 { animation-delay: 0.06s; }
+.delay-2 { animation-delay: 0.12s; }
+.delay-3 { animation-delay: 0.18s; }
+.delay-4 { animation-delay: 0.24s; }
+.delay-5 { animation-delay: 0.30s; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+.spinner {
+  width: 16px; height: 16px; border: 1.5px solid var(--gris-2);
+  border-top-color: var(--encre); border-radius: 50%; animation: spin 0.7s linear infinite;
+}
+
+.sep { height: 0.5px; background: var(--border-light); }
+.text-muted { color: var(--gris-4); }
+.mono { font-family: 'IBM Plex Mono', monospace; }
+.serif { font-family: 'Cormorant Garamond', serif; }
+.truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
